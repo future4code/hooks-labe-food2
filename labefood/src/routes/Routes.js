@@ -10,6 +10,7 @@ import Profile from "../screens/Profile"
 import ProfileEdit from "../screens/ProfileEdit"
 import RegisterAddress from "../screens/RegisterAddress"
 import Restaurant from "../screens/Restaurant"
+import RestaurantDetails from "../screens/RestaurantDetails/RestaurantDetails"
 import Search from "../screens/Search"
 import SignUp from "../screens/SignUp"
 
@@ -30,6 +31,8 @@ const Router = () => {
                 <Route path="/restaurante" element={<Restaurant />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/signup" element={<SignUp />} />
+                <Route path="/foods" element={<RestaurantDetails />} />
+
             </Routes>
         </BrowserRouter>
     )
