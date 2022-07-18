@@ -1,11 +1,13 @@
 import React from "react";
-import {Container} from './styles'
+import { Container } from './styles'
 
-const Login=()=>{
+const Login = () => {
   return (
-   <Container>
-
-   </Container>
+    <Container>
+      <input placeholder="email" />
+      <input placeholder="password" />
+      <button>Entrar</button>
+    </Container>
   );
 }
 
