@@ -18,66 +18,86 @@ const RestaurantDetails = () => {
         .get ("https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants/1",headers)
         .then ((res)=> {
         setRestaurantDetails(res.data.restaurant.products)
-        console.log (res.data.restaurant.products)
+        // console.log (res.data.restaurant.products)
     })
         .catch ((err)=>{console.log("erros detalhes")})
 
     }
 
-
-
      const renderPrincipais = restaurantDetails && restaurantDetails.map ((foods)=> {
         if (foods.category !== "Bebida" &&  foods.category !== "Acompanhamento" ) {
             return <div key = {foods.id}>
-                 <img src={foods.photoUrl} alt = "imagem" />
-                 <p>Nome: {foods.name} </p>
-                 <p>Descrição: {foods.description} </p>
-    //          <p>Preço: {foods.price.toFixed(2)} </p>
+                    <img src={foods.photoUrl} alt = "imagem" />
+                    <p>Nome: {foods.name} </p>
+                    <p>Descrição: {foods.description} </p>
+                    <p>Preço: {foods.price.toFixed(2)} </p>
+                    <button> Acidionar </button>
             </div>
         }
      })
 
-
-
-    // const renderDetailsfood =  restaurantDetails && restaurantDetails.map ((foods)=>{
-    //     return <div key = {foods.id}>
-    //         <p>Nome: {foods.name} </p>
-    //         <p>Preço: {foods.price} </p>
-    //         <p>Categoria: {foods.category} </p>
-          
-    //     </div>
-    // })
-
+    
+     const renderDrinks = restaurantDetails && restaurantDetails.map ((foods)=> {
+        if (foods.category === "Bebida") {
+            return <div key = {foods.id}>
+                    <img src={foods.photoUrl} alt = "imagem" />
+                    <p>Nome: {foods.name} </p>
+                    <p>Descrição: {foods.description} </p>
+                    <p>Preço: {foods.price.toFixed(2)} </p>
+                    <button> Acidionar </button>
+            </div>
+        }
+     })
+    
+     const renderAcompanhamentos = restaurantDetails && restaurantDetails.map ((foods)=> {
+        if (foods.category === "Acompanhamento") {
+            return <div key = {foods.id}>
+                    <img src={foods.photoUrl} alt = "imagem" />
+                    <p>Nome: {foods.name} </p>
+                    <p>Descrição: {foods.description} </p>
+                    <p>Preço: {foods.price.toFixed(2)} </p>
+                    <button> Acidionar </button>
+            </div>
+        }
+     })
   
-      
-
-    // const grupCategory = restaurantDetails && restaurantDetails.reduce (function(acumulador,
-    //     food) {
-    //     if (!acumulador[food.category]){
-    //         acumulador[food.category] = [];
-    //     }
-    //     acumulador [food.category].push (food);
-        
-    //     return acumulador;
-           
-    // },{})
-
-    // console.log (grupCategory)
-
-    // const renderCategory =  grupCategory && grupCategory.map ((foods)=>{
-    //     return <div key = {foods.id}>
-    //             <p>{foods} </p>         
-    //     </div>    
-    // })
         
 
     return (
-        <div>
-        <h4>{renderPrincipais}</h4>
-        
-              Página com os detalhes do restaurante, são exibidas as comidas.
-     </div>
+        <>
+            <div>
+                <h3>Principais</h3>
+                <h4>{renderPrincipais}</h4>
+            </div>
+            <div>
+                <h3>Bebidas</h3>
+                <h4>{renderDrinks}</h4>
+            </div>
+            <div>
+                <h3>Aconpanhamentos</h3>
+                <h4>{renderAcompanhamentos}</h4>
+            </div>
+        </>
     );
   }
   
   export default RestaurantDetails;
+
+
+
+
+
+
+
+    //REDUCE 
+
+    // const grupCategory = restaurantDetails && restaurantDetails.reduce (function(acumulador,
+        //     food) {
+        //     if (!acumulador[food.category]){
+        //         acumulador[food.category] = [];
+        //     }
+        //     acumulador [food.category].push (food);
+            
+        //     return acumulador;
+            
+        // },{})
