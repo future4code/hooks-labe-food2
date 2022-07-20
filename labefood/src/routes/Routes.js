@@ -17,23 +17,25 @@ import SignUp from "../screens/SignUp"
 const Router = () => {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route index element={<HomePage />} />
-                <Route path="/adress" element={<RegisterAddress/>} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/confirm" element={<Confirm />} />
-                <Route path="/feed" element={<Feed />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/order" element={<Order />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/profileedit" element={<ProfileEdit />} />
-                <Route path="/registeredit" element={<AddressEdit />} />
-                <Route path="/restaurante" element={<Restaurant />} />
-                <Route path="/search" element={<Search />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/foods" element={<RestaurantDetails />} />
+            <GlobalStateContext.Provider value={{}}>
+                <Routes>
+                    <Route index element={<HomePage />} />
+                    <Route path="/adress" element={<RegisterAddress/>} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/confirm" element={<Confirm />} />
+                    <Route path="/feed" element={<Feed />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/order" element={<Order />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/profileedit" element={<ProfileEdit />} />
+                    <Route path="/registeredit" element={<AddressEdit />} />
+                    <Route path="/restaurante" element={<Restaurant />} />
+                    <Route path="/search" element={<Search />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/foods" element={<RestaurantDetails />} />
 
-            </Routes>
+                </Routes>
+            </GlobalStateContext.Provider>
         </BrowserRouter>
     )
 }

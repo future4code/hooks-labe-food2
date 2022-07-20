@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Container, FormSignUp } from './styles'
+import axios from 'axios';
+import { Container, FormSignUp } from './styles';
 
 const SignUp = () => {
   const [name, setName] = useState("")
@@ -16,7 +17,17 @@ const SignUp = () => {
       cpf: cpf,
       password: password
     }
+
+    axios
+    .post('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/signup', body)
+    .then(() => {
+      alert('usuário criado com sucesso')
+    })
+    .catch(() => {
+      alert('Erro na criação do usuário')
+    })
   }
+  
 
   const onChangeName = (event) => {
     setName(event.target.value)
@@ -39,7 +50,7 @@ const SignUp = () => {
       <FormSignUp onSubmit={login} >
         <input type="text" placeholder="Nome" onChange={onChangeName} value={name} required />
         <input type="email" placeholder="email@email.com" onChange={onChangeEmail} value={email} required />
-        <input type="number" placeholder="CPF" onChange={onChangeCpf} value={cpf} pattern={"[0-9]{11}"} />
+        <input type="text" placeholder="CPF" onChange={onChangeCpf} value={cpf} pattern={"[0-9]{11}"} />
         <input type="password" placeholder="Senha" onChange={onChangePassword} value={password} required />
         <input type="password" placeholder="Confirme a senha" onChange={onChangeConfirmPassword} value={confirmPassword} required />
         <button>enviar</button>
