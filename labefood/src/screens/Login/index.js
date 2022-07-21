@@ -2,51 +2,82 @@ import React from "react";
 import { Container } from './styles'
 import { useState } from 'react'
 import axios from "axios";
+import useForm from '../../hooks/useForm';
+import { goToAddressEdit, goToFeed, goToSignUp } from "../../routes/Coordinator";
+import { useNavigate } from "react-router-dom";
+import { TextField, Button } from '@mui/material';
 
 const Login = () => {
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
+  // const [login, setLogin] = useState("");
+  // const [password, setPassword] = useState("");
+  const [ form, onChange, cleanFields] = useForm({email:"", password:""})
+  const navigate = useNavigate()
 
+  const getLogin = (event) => {
+    event.preventDefault()
 
-  const getLogin = () => {
-    const body = {
-      email: login,
-      password: password
-    }
-    // const headers = {
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   }
-   // }
     axios
-    .post('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/login', body)
-    .then((res) =>{
-      alert("Sucesso")
-      console.log(res.data.user)
-      // setHasAdress(res.data.user.hasAdress)
-      localStorage.setItem("token", res.data.token)
-      console.log(res.data.token)
+      .post('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/login', form)
+      .then((res) => {
+        alert("Sucesso")
+        console.log(res.data.user)
+        if (res.data.user.hasAddress === true) {
+          goToFeed(navigate)
+        } else {
+          goToAddressEdit(navigate)
+        }
+        // setHasAdress(res.data.user.hasAdress)
+        localStorage.setItem("token", res.data.token)
+        console.log(res.data.token)
 
-    })
-    .catch((err) => {
-      alert("Usuário não cadastrado.")
-    })
-  }
-  const onChangeLogin = (e) => {
-    setLogin(e.target.value)
-  }
-  const onChangePassword = (e) => {
-    setPassword(e.target.value)
+
+      })
+      .catch((err) => {
+        alert("Usuário não cadastrado.")
+      })
   }
 
   return (
     <Container>
       <h2>Future Eats</h2>
       <p>Entrar</p>
-      <input onChange={onChangeLogin} type="text" placeholder="email" />
-      <input onChange={onChangePassword} type="text" placeholder="password" />
-      <button onClick={() => getLogin()}>Entrar</button>
-      <a href="#">Não possui cadastro? Clique aqui.</a>
+      <form onSubmit={getLogin}>
+        <TextField
+          value={form.email}
+          onChange={onChange}
+          name="email"
+          required
+          helperText=" "
+          fullWidth="fullWidth"
+          label="Email"
+          placeholder="Email"
+          variante="filled"
+          type="email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          color= "success"
+        />
+        <TextField
+          value={form.password}
+          onChange={onChange}
+          name="password"
+          required
+          helperText=" "
+          fullWidth="fullWidth"
+          label="Senha"
+          placeholder="Senha"
+          variante="filled"
+          type="password"
+          color= "success"
+        />
+        <Button
+          type="submit"
+          size="large"
+          variant="contained"
+          color="success"
+        >Entrar
+        </Button>
+      </form>
+      <a onClick={() => goToSignUp(navigate)}>Não possui cadastro? Clique aqui.</a>
     </Container>
   );
 }
