@@ -17,7 +17,7 @@ import SignUp from "../screens/SignUp"
 const Router = () => {
     return (
         <BrowserRouter>
-            <GlobalStateContext.Provider value={{}}>
+            {/* <GlobalStateContext.Provider value={{}}> */}
                 <Routes>
                     <Route index element={<HomePage />} />
                     <Route path="/adress" element={<RegisterAddress/>} />
@@ -35,7 +35,7 @@ const Router = () => {
                     <Route path="/foods" element={<RestaurantDetails />} />
 
                 </Routes>
-            </GlobalStateContext.Provider>
+            {/* </GlobalStateContext.Provider> */}
         </BrowserRouter>
     )
 }

@@ -4,6 +4,7 @@ import axios from "axios"
 const RestaurantDetails = () => {
 
     const [restaurantDetails,setRestaurantDetails] = useState ()
+    const [restaurant,setRestaurant] = useState ([])
     
     useEffect (()=>{
         getDetailsFood();
@@ -15,14 +16,17 @@ const RestaurantDetails = () => {
         }
 
         axios
-        .get ("https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants/1",headers)
+        .get ("https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants/1 ",headers)
         .then ((res)=> {
         setRestaurantDetails(res.data.restaurant.products)
-        // console.log (res.data.restaurant.products)
+        setRestaurant (res.data.restaurant)
+        // console.log (res.data.restaurant)
     })
-        .catch ((err)=>{console.log("erros detalhes")})
+        .catch ((err)=>{console.log("Erro da requisição de detalhes")})
+
 
     }
+ 
 
      const renderPrincipais = restaurantDetails && restaurantDetails.map ((foods)=> {
         if (foods.category !== "Bebida" &&  foods.category !== "Acompanhamento" ) {
@@ -31,7 +35,7 @@ const RestaurantDetails = () => {
                     <p>Nome: {foods.name} </p>
                     <p>Descrição: {foods.description} </p>
                     <p>Preço: {foods.price.toFixed(2)} </p>
-                    <button> Acidionar </button>
+                    <button> Adicionar </button>
             </div>
         }
      })
@@ -44,7 +48,7 @@ const RestaurantDetails = () => {
                     <p>Nome: {foods.name} </p>
                     <p>Descrição: {foods.description} </p>
                     <p>Preço: {foods.price.toFixed(2)} </p>
-                    <button> Acidionar </button>
+                    <button> Adicionar </button>
             </div>
         }
      })
@@ -56,15 +60,30 @@ const RestaurantDetails = () => {
                     <p>Nome: {foods.name} </p>
                     <p>Descrição: {foods.description} </p>
                     <p>Preço: {foods.price.toFixed(2)} </p>
-                    <button> Acidionar </button>
+                    <button> Adicionar </button>
             </div>
         }
      })
+
+     //VERIFICAR PORQUE O MAP DO RESTAURANTE NÃO ESTA CORRETO
+
+    //  const renderInfoRestaurant = restaurant && restaurant.map ((restaurant)=> {
+    //     if(!restaurant) {
+    //     return <div key = {restaurant.id}>
+    //             {/* <img src={restaurant.logoUrl} alt = "imagem" /> */}
+    //             <p>{restaurant.name}</p>
+            
+    //     </div>
+    //     }
+    //  })
   
+     console.log (restaurant)
         
 
     return (
-        <>
+        <>  <div>
+                {/* <h4>{renderInfoRestaurant}</h4> */}
+            </div>
             <div>
                 <h3>Principais</h3>
                 <h4>{renderPrincipais}</h4>
@@ -74,7 +93,7 @@ const RestaurantDetails = () => {
                 <h4>{renderDrinks}</h4>
             </div>
             <div>
-                <h3>Aconpanhamentos</h3>
+                <h3>Acompanhamentos</h3>
                 <h4>{renderAcompanhamentos}</h4>
             </div>
         </>
