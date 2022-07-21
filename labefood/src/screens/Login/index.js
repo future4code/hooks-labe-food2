@@ -24,8 +24,8 @@ const Login = () => {
       alert("Sucesso")
       console.log(res.data.user)
       setHasAdress(res.data.user.hasAdress)
-      localStorage.setItem("token", res.data.token)
-      console.log(res.data.token)
+      // localStorage.setItem("token", res.data.token)
+      // console.log(res.data.token)
 
     })
     .catch((err) => {

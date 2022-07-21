@@ -4,6 +4,7 @@ import URL_BASE from '../constants/URL_BASE'
 
 const GlobalState = () => {
   const [hasAdress, setHasAdress] = useState("");
+  const [idRestaurant, setIdRestaurant] = useState("")
   
   
  
