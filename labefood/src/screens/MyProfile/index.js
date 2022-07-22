@@ -1,10 +1,8 @@
 import React from "react";
 import Footer from "../../components/Footer";
-
-
 import { Container } from './styles'
 
-const Feed = () => {
+const MyProfile = () => {
   return (
     <Container>
       <Footer />
@@ -12,4 +10,4 @@ const Feed = () => {
   );
 }
 
-export default Feed;
+export default MyProfile;
