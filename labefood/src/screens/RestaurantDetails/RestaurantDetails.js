@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios"
+import * as S from './styles'
 
 const RestaurantDetails = () => {
 
@@ -30,38 +31,56 @@ const RestaurantDetails = () => {
 
      const renderPrincipais = restaurantDetails && restaurantDetails.map ((foods)=> {
         if (foods.category !== "Bebida" &&  foods.category !== "Acompanhamento" ) {
-            return <div key = {foods.id}>
-                    <img src={foods.photoUrl} alt = "imagem" />
-                    <p>Nome: {foods.name} </p>
-                    <p>Descrição: {foods.description} </p>
-                    <p>Preço: {foods.price.toFixed(2)} </p>
-                    <button> Adicionar </button>
-            </div>
+            return <S.CardProdutoMap key = {foods.id}>
+                    <S.Image src={foods.photoUrl} alt = "imagem" />
+                    <S.InfProduto>
+                        <p>{foods.name} </p>
+                        <p>{foods.description} </p>
+                        <p>{foods.price.toFixed(2)} </p>
+                    </S.InfProduto>
+                    <S.ButtonsFood>
+                        <p></p>
+                        <p></p>
+                         <button> Adicionar </button>
+                    </S.ButtonsFood>
+            </S.CardProdutoMap>
         }
      })
 
     
      const renderDrinks = restaurantDetails && restaurantDetails.map ((foods)=> {
         if (foods.category === "Bebida") {
-            return <div key = {foods.id}>
-                    <img src={foods.photoUrl} alt = "imagem" />
-                    <p>Nome: {foods.name} </p>
-                    <p>Descrição: {foods.description} </p>
-                    <p>Preço: {foods.price.toFixed(2)} </p>
+            return <S.CardProdutoMap key = {foods.id}>
+                    <S.Image src={foods.photoUrl} alt = "imagem" />
+                    <S.InfProduto>
+                    <p>{foods.name} </p>
+                    <p>{foods.description} </p>
+                    <p>{foods.price.toFixed(2)} </p>
+                    </S.InfProduto>
+                    <S.ButtonsFood>
+                    <p></p>
+                    <p></p>
                     <button> Adicionar </button>
-            </div>
+                    </S.ButtonsFood>
+            </S.CardProdutoMap>
         }
      })
     
      const renderAcompanhamentos = restaurantDetails && restaurantDetails.map ((foods)=> {
         if (foods.category === "Acompanhamento") {
-            return <div key = {foods.id}>
-                    <img src={foods.photoUrl} alt = "imagem" />
-                    <p>Nome: {foods.name} </p>
-                    <p>Descrição: {foods.description} </p>
-                    <p>Preço: {foods.price.toFixed(2)} </p>
-                    <button> Adicionar </button>
-            </div>
+            return <S.CardProdutoMap key = {foods.id}>
+                    <S.Image src={foods.photoUrl} alt = "imagem" />
+                    <S.InfProduto>
+                    <p>{foods.name} </p>
+                    <p>{foods.description} </p>
+                    <p>{foods.price.toFixed(2)} </p>
+                    </S.InfProduto>
+                    <S.ButtonsFood>
+                        <p></p>
+                        <p></p>
+                         <button> Adicionar </button>
+                    </S.ButtonsFood>
+            </S.CardProdutoMap>
         }
      })
 
@@ -81,24 +100,24 @@ const RestaurantDetails = () => {
         
 
     return (
-        <>  <div>
-                {/* <h4>{renderInfoRestaurant}</h4> */}
-            </div>
-            <div>
-                <h3>Principais</h3>
-                <h4>{renderPrincipais}</h4>
-            </div>
-            <div>
-                <h3>Bebidas</h3>
-                <h4>{renderDrinks}</h4>
-            </div>
-            <div>
-                <h3>Acompanhamentos</h3>
-                <h4>{renderAcompanhamentos}</h4>
-            </div>
-        </>
+    <S.Container>          
+      
+        <S.CardProdutos>
+            <h3>Principais</h3>
+            <h4>{renderPrincipais}</h4>
+        
+            <h3>Bebidas</h3>
+            <h4>{renderDrinks}</h4>
+       
+            <h3>Acompanhamentos</h3>
+            <h4>{renderAcompanhamentos}</h4>
+        </S.CardProdutos>     
+</S.Container>
+        
     );
   }
+
+
   
   export default RestaurantDetails;
 
