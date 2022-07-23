@@ -47,58 +47,58 @@ const ProfileEdit = () => {
 
   return (
     <ContainerMaster>
-    <Container>
-      <Header>
-        <ButtonBack><ArrowBackIosNewIcon /></ButtonBack>
-        <Tittle>Editar</Tittle>
-      </Header>
-      <Form onSubmit={rename}>
-        <TextField
-          helperText=" "
-          value={name}
-          onChange={onChangeName}
-          required
-          fullWidth="fullWidth"
-          label="Nome"
-          placeholder="Nome e sobrenome"
-          variante="filled"
-          color="success"
-        />
-        <TextField
-          helperText=" "
-          value={email}
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-          onChange={onChangeEmail}
-          fullWidth="fullWidth"
-          label="E-mail"
-          placeholder="email@email.com"
-          variante="filled"
-          color="success"
-        />
-        <TextField
-          helperText=" "
-          value={cpf}
-          onChange={onChangeCpf}
-          required
-          fullWidth="fullWidth"
-          label="CPF"
-          placeholder="000.000.000.00"
-          variante="filled"
-          color="success"
-          pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
-        />
-        <Button
-          type="submit"
-          fullWidth label="fullWidth"
-          size="large"
-          variant="contained"
-          color="success"
-          pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
-        >Salvar
-        </Button>
-      </Form>      
-    </Container>
-    </ContainerMaster>
+      <Container>
+        <Header>
+          <ButtonBack><ArrowBackIosNewIcon /></ButtonBack>
+          <Tittle>Editar</Tittle>
+        </Header>
+        <Form onSubmit={rename}>
+          <TextField
+            helperText=" "
+            value={name}
+            onChange={onChangeName}
+            required
+            fullWidth="fullWidth"
+            label="Nome"
+            placeholder="Nome e sobrenome"
+            variante="filled"
+            color="success"
+          />
+          <TextField
+            helperText=" "
+            value={email}
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            onChange={onChangeEmail}
+            fullWidth="fullWidth"
+            label="E-mail"
+            placeholder="email@email.com"
+            variante="filled"
+            color="success"
+          />
+          <TextField
+            helperText=" "
+            value={cpf}
+            onChange={onChangeCpf}
+            required
+            fullWidth="fullWidth"
+            label="CPF"
+            placeholder="000.000.000.00"
+            variante="filled"
+            color="success"
+            pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
+          />
+          <Button
+            type="submit"
+            fullWidth label="fullWidth"
+            size="large"
+            variant="contained"
+            color="success"
+            pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
+          >Salvar
+          </Button>
+        </Form>      
+      </Container>
+    </ContainerMaster> 
   );
 }
 
