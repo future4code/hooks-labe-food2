@@ -33,5 +33,4 @@ width:90vw;
 display: flex;
 //align-items: center;
 flex-direction: column;
-margin-right: 1.2em;
 `

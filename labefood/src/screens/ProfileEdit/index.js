@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Header, Tittle, ButtonBack } from './styles'
+import { Container, Header, Tittle, ButtonBack, Form , ContainerMaster} from './styles'
 import { TextField, Button } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import axios from "axios"
@@ -11,7 +11,7 @@ const ProfileEdit = () => {
   const [cpf, setCpf] = useState("")
 
   const rename = (event) => {
-   event.preventDefault()
+    event.preventDefault()
 
     const headers = {
       headers: {
@@ -26,8 +26,8 @@ const ProfileEdit = () => {
     }
 
     axios
-      .put("https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile"  , body , headers)
-      .then((resp) => console.log(resp.data))
+      .put("https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile", body, headers)
+      .then((resp) => alert("Usuário alterado com sucesso!"))
       .catch((error) => alert(error.message))
   }
 
@@ -46,50 +46,59 @@ const ProfileEdit = () => {
   }
 
   return (
+    <ContainerMaster>
     <Container>
       <Header>
         <ButtonBack><ArrowBackIosNewIcon /></ButtonBack>
         <Tittle>Editar</Tittle>
       </Header>
-      <form onSubmit={rename}>
-      <TextField
-        value={name}
-        onChange={onChangeName}
-        required
-        fullWidth="fullWidth"
-        label="Nome"
-        placeholder="Nome e sobrenome"
-        variante="filled"
-      />
-      <TextField
-        type="email"
-        value={email}
-        onChange={onChangeEmail}
-        required
-        fullWidth="fullWidth"
-        label="E-mail"
-        placeholder="email@email.com"
-        variante="filled"
-      />
-      <TextField
-        value={cpf}
-        onChange={onChangeCpf}
-        required
-        fullWidth="fullWidth"
-        label="CPF"
-        placeholder="000.000.000.00"
-        variante="filled"
-      />
-      <Button
-        type="submit"
-        fullWidth label="fullWidth"
-        size="large"
-        variant="contained"
-        color="success"
-      >Salvar
-      </Button>
-      </form>
+      <Form onSubmit={rename}>
+        <TextField
+          helperText=" "
+          value={name}
+          onChange={onChangeName}
+          required
+          fullWidth="fullWidth"
+          label="Nome"
+          placeholder="Nome e sobrenome"
+          variante="filled"
+          color="success"
+        />
+        <TextField
+          helperText=" "
+          value={email}
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          onChange={onChangeEmail}
+          fullWidth="fullWidth"
+          label="E-mail"
+          placeholder="email@email.com"
+          variante="filled"
+          color="success"
+        />
+        <TextField
+          helperText=" "
+          value={cpf}
+          onChange={onChangeCpf}
+          required
+          fullWidth="fullWidth"
+          label="CPF"
+          placeholder="000.000.000.00"
+          variante="filled"
+          color="success"
+          pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
+        />
+        <Button
+          type="submit"
+          fullWidth label="fullWidth"
+          size="large"
+          variant="contained"
+          color="success"
+          pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
+        >Salvar
+        </Button>
+      </Form>      
     </Container>
+    </ContainerMaster>
   );
 }
 

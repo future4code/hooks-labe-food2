@@ -23,7 +23,7 @@ const AddressEdit = () => {
     axios
       .put(`${URL_BASE}/address`, form, headers)
       .then((res) => {
-        alert("endereço cadastrada")
+        alert("endereço cadastrado")
         localStorage.setItem("token", res.data.token)
         goToFeed(navigate)
       })

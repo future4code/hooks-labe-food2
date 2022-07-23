@@ -2,9 +2,10 @@ import React from "react";
 import {Container} from './styles';
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from '../../assets/search.svg'
+import Footer from "../../components/Footer";
 
 
-const Feed=()=>{
+const Feed = () => {
   return (
    <Container>
        <TextField
@@ -19,6 +20,7 @@ const Feed=()=>{
         }}
   
       />
+      <Footer />
    </Container>
   );
 }
