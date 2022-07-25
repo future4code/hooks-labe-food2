@@ -1,14 +1,27 @@
 import React from "react";
+import {Container} from './styles';
+import { TextField, InputAdornment } from "@mui/material";
+import SearchIcon from '../../assets/search.svg'
 import Footer from "../../components/Footer";
 
 
-import { Container } from './styles'
-
 const Feed = () => {
   return (
-    <Container>
+   <Container>
+       <TextField
+        placeholder="Restaurante"
+        color="common"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <img src={SearchIcon} alt="search icon"/>
+            </InputAdornment>
+          ),
+        }}
+  
+      />
       <Footer />
-    </Container>
+   </Container>
   );
 }
 

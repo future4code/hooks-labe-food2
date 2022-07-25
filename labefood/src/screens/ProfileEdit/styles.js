@@ -7,7 +7,6 @@ align-items: flex-end;
 `
 
 export const Container = styled.div`
-box-sizing: border-box;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -17,7 +16,7 @@ gap: 16px
 
 export const Header = styled.div`
 height: 10vh;
-width: 100vw;
+width: 100%;
 display: flex;
 border-bottom: 1px solid #dfdfdf;
 align-items: center;
@@ -33,5 +32,5 @@ position: relative;
 padding-left: 110px;
 `
 export const Form = styled.form`
-width: 95vw;
+width: 95%;
 `
