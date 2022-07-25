@@ -1,11 +1,20 @@
 import React from "react";
-import {Container} from './styles';
+import {Container,Infos, Delivery,InsideCard} from './styles';
 import img from './image.png'
 
 const CardRestaurant=()=>{
   return (
    <Container>
-        <img src={img} alt="restaurant pic" />
+        <InsideCard>
+            <img src={img} alt="Restaurant profile"/>
+            <Infos>
+                <h2>Vinil Butantã</h2>
+                <Delivery>
+                    <span>50 - 60 min</span>
+                    <span>Frete R$6,00</span>
+                </Delivery>
+            </Infos>
+        </InsideCard>
    </Container>
   );
 }

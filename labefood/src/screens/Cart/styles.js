@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-height: 100vh;
+
+height: 100%;
 display: flex;
 flex-direction: column;
 align-items: center;
 `;
 
 export const ContainerTitle = styled.div`
-    width: 100vw;
+    width: 100%;
     margin-top: 25px;
     display: flex;
     align-items: center;
@@ -66,7 +67,11 @@ export const Address = styled.h3`
 `
 
 export const ContainerFoter = styled.div`
-    width: 100vw;
+    width: 100%;
     bottom: 0;
     position: fixed;
 `
+
+
+`;
+

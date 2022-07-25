@@ -6,11 +6,11 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-width: 100vw;
+width: 100%;
 //gap: 16px
 `
 export const Header = styled.div`
-width: 100vw;
+width: 100%;
 justify-content: space-between;
 //margin-right: ;
 align-items: center;
@@ -29,7 +29,7 @@ padding-right: 30px;
 
 export const Form = styled.form`
 margin-top: 20px;
-width:90vw;
+width:90%;
 display: flex;
 //align-items: center;
 flex-direction: column;

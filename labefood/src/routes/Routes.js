@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddressEdit from "../screens/AddressEdit"
 import Cart from "../screens/Cart"
 import Confirm from "../screens/Confirm"
@@ -11,32 +11,32 @@ import ProfileEdit from "../screens/ProfileEdit"
 import MyProfile from "../screens/MyProfile"
 import Restaurant from "../screens/Restaurant"
 import RestaurantDetails from "../screens/RestaurantDetails/RestaurantDetails"
-import Search from "../screens/Search"
-import SignUp from "../screens/SignUp"
+import Search from "../screens/Search";
+import SignUp from "../screens/SignUp";
 
 const Router = () => {
     return (
-        <BrowserRouter>
-            {/* <GlobalStateContext.Provider value={{}}> */}
-                <Routes>
-                    <Route index element={<HomePage />} />
-                    <Route path="/Myprofile" element={<MyProfile/>} />
-                    <Route path="/cart" element={<Cart />} />
-                    <Route path="/confirm" element={<Confirm />} />
-                    <Route path="/feed" element={<Feed />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/order" element={<Order />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/profileedit" element={<ProfileEdit />} />
-                    <Route path="/registeredit" element={<AddressEdit />} />
-                    <Route path="/restaurante" element={<Restaurant />} />
-                    <Route path="/search" element={<Search />} />
-                    <Route path="/signup" element={<SignUp />} />
-                    <Route path="/foods" element={<RestaurantDetails />} />
+            <BrowserRouter>
+                {/* <GlobalStateContext.Provider value={{}}> */}
+                    <Routes>
+                        <Route index element={<HomePage />} />
+                        <Route path="/Myprofile" element={<MyProfile/>} />
+                        <Route path="/cart" element={<Cart />} />
+                        <Route path="/confirm" element={<Confirm />} />
+                        <Route path="/feed" element={<Feed />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/order" element={<Order />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/profileedit" element={<ProfileEdit />} />
+                        <Route path="/registeredit" element={<AddressEdit />} />
+                        <Route path="/restaurante" element={<Restaurant />} />
+                        <Route path="/search" element={<Search />} />
+                        <Route path="/signup" element={<SignUp />} />
+                        <Route path="/foods" element={<RestaurantDetails />} />
 
-                </Routes>
-            {/* </GlobalStateContext.Provider> */}
-        </BrowserRouter>
+                    </Routes>
+                {/* </GlobalStateContext.Provider> */}
+            </BrowserRouter>
     )
 }
 
