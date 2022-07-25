@@ -6,7 +6,6 @@ import Layout from "./screens/Layout";
 function App() {
   return (
     <div>
-      {/* <Router /> */}
       <Layout/>
       <GlobalStyles/>
     </div>

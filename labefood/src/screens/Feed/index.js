@@ -3,6 +3,7 @@ import {Container} from './styles';
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from '../../assets/search.svg'
 import Footer from "../../components/Footer";
+import ListCategory from "../../components/ListCategory";
 
 
 const Feed = () => {
@@ -20,6 +21,7 @@ const Feed = () => {
         }}
   
       />
+      <ListCategory />
       <Footer />
    </Container>
   );
