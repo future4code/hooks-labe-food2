@@ -1,11 +1,12 @@
 import React from "react";
-import { Container } from './styles'
+import { Container, Text, FormLogin } from './styles'
 import { useState } from 'react'
 import axios from "axios";
 import useForm from '../../hooks/useForm';
 import { goToAddressEdit, goToFeed, goToSignUp } from "../../routes/Coordinator";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button } from '@mui/material';
+import LoginImg from '../../assets/Login.png'
 
 const Login = () => {
   // const [login, setLogin] = useState("");
@@ -39,9 +40,9 @@ const Login = () => {
 
   return (
     <Container>
-      <h2>Future Eats</h2>
-      <p>Entrar</p>
-      <form onSubmit={getLogin}>
+      <img src={LoginImg} alt="FutureEats imagem"/>
+      <Text>Entrar</Text>
+      <FormLogin onSubmit={getLogin}>
         <TextField
           value={form.email}
           onChange={onChange}
@@ -74,9 +75,10 @@ const Login = () => {
           size="large"
           variant="contained"
           color="success"
+          fullWidth="fullWidth"
         >Entrar
         </Button>
-      </form>
+      </FormLogin>
       <a onClick={() => goToSignUp(navigate)}>Não possui cadastro? Clique aqui.</a>
     </Container>
   );

@@ -71,4 +71,3 @@ export const ContainerFoter = styled.div`
     bottom: 0;
     position: fixed;
 `
-
