@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { TextField, Button } from '@mui/material';
 import { useNavigate } from "react-router-dom";
-import { Container, FormSignUp } from './styles';
+import { Container, FormSignUp, Text } from './styles';
 import { goToAddressEdit } from "../../routes/Coordinator";
+import Logo from "../../assets/Login.png"
 
 const SignUp = () => {
   const [name, setName] = useState("")
@@ -55,6 +56,8 @@ const SignUp = () => {
   console.log(name, email, cpf, password)
   return (
     <Container>
+      <img src={Logo} alt="Logo FutureEats"/>
+      <Text>Cadastrar</Text>
       <FormSignUp onSubmit={login} >
         <TextField
           value={name}
@@ -65,6 +68,7 @@ const SignUp = () => {
           placeholder="Nome e sobrenome"
           variante="filled"
           type="text"
+          color= "success"
         />
         <TextField
         value={email}
@@ -75,6 +79,7 @@ const SignUp = () => {
         placeholder="Email"
         variante="filled"
         type="email"
+        color= "success"
       />
          <TextField
         value={cpf}
@@ -112,7 +117,7 @@ const SignUp = () => {
           size="large"
           variant="contained"
           color="success"
-          >Enviar
+          >Criar
       </Button>
       </FormSignUp>
     </Container>
