@@ -72,6 +72,3 @@ export const ContainerFoter = styled.div`
     position: fixed;
 `
 
-
-`;
-
