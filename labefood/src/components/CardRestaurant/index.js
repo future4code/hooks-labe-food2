@@ -2,7 +2,9 @@ import React from "react";
 import {Container,Infos, Delivery,InsideCard} from './styles';
 import img from './image.png'
 
-const CardRestaurant=()=>{
+const CardRestaurant=(props)=>{
+
+        
   return (
    <Container>
         <InsideCard>

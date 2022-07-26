@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios"
 import * as S from './styles'
+import CardRestaurantDetails from "../../components/CardRestaurantDetails";
 
 const RestaurantDetails = () => {
 
     const [restaurantDetails,setRestaurantDetails] = useState ()
-    const [restaurant,setRestaurant] = useState ([])
+    const [restaurant, setRestaurant] = useState ()
+
+   
+    
     
     useEffect (()=>{
         getDetailsFood();
@@ -13,7 +17,7 @@ const RestaurantDetails = () => {
 
     const getDetailsFood = () => {
         const headers = {
-            headers: {auth:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImpzRU9JNTliSk1xbG5qbzZ1RzlzIiwibmFtZSI6IlBlZHJvIiwiZW1haWwiOiJwZWRyb2Nlc2FyNUBnbWFpbC5jb20iLCJjcGYiOiIzODQuNzUyLjQ3NC03NCIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJSLiBHdWFqYWphcmFzLCAwMDAsIDAwIC0gVmlsYSBOLiBDb25jZWnDp8OjbyIsImlhdCI6MTY1Nzg0MDM4M30.hFK_KPLa5m9RkmoW5rRKOXo3XHBbLQtT-dp3kyqyV04"}
+            headers: {auth:localStorage.getItem("token")}
         }
 
         axios
@@ -21,13 +25,14 @@ const RestaurantDetails = () => {
         .then ((res)=> {
         setRestaurantDetails(res.data.restaurant.products)
         setRestaurant (res.data.restaurant)
-        // console.log (res.data.restaurant)
+        console.log (res.data)
     })
         .catch ((err)=>{console.log("Erro da requisição de detalhes")})
 
-
     }
  
+    console.log("Detalhes restaurante",restaurantDetails)
+    console.log("Restaurante",restaurant)
 
      const renderPrincipais = restaurantDetails && restaurantDetails.map ((foods)=> {
         if (foods.category !== "Bebida" &&  foods.category !== "Acompanhamento" ) {
@@ -84,23 +89,24 @@ const RestaurantDetails = () => {
         }
      })
 
-     //VERIFICAR PORQUE O MAP DO RESTAURANTE NÃO ESTA CORRETO
-
-    //  const renderInfoRestaurant = restaurant && restaurant.map ((restaurant)=> {
-    //     if(!restaurant) {
-    //     return <div key = {restaurant.id}>
-    //             {/* <img src={restaurant.logoUrl} alt = "imagem" /> */}
-    //             <p>{restaurant.name}</p>
-            
-    //     </div>
-    //     }
-    //  })
+   const Verificar = () => {
+     if (restaurant && restaurant) {
+        return <CardRestaurantDetails
+        name={restaurant.name} 
+        category={restaurant.category}
+        deliveryTime={restaurant.deliveryTime}
+        address={restaurant.address}
+        shipping={restaurant.shipping}
+        /> 
+     }
+   }
   
-     console.log (restaurant)
-        
+           
 
     return (
-    <S.Container>          
+    <S.Container>      
+
+        {Verificar()}
       
         <S.CardProdutos>
             <h3> Principais</h3>
@@ -131,21 +137,8 @@ const RestaurantDetails = () => {
   export default RestaurantDetails;
 
 
+  
 
 
 
-
-
-    //REDUCE 
-
-    // const grupCategory = restaurantDetails && restaurantDetails.reduce (function(acumulador,
-        //     food) {
-        //     if (!acumulador[food.category]){
-        //         acumulador[food.category] = [];
-        //     }
-        //     acumulador [food.category].push (food);
-            
-        //     return acumulador;
-            
-        // },{})
-
+ 
