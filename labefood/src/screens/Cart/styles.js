@@ -69,5 +69,5 @@ export const Address = styled.h3`
 export const ContainerFoter = styled.div`
     width: 100%;
     bottom: 0;
-    position: fixed;
+    /* position: fixed; */
 `

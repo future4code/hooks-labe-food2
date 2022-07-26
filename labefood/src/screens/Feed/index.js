@@ -2,7 +2,7 @@ import React, { useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {URL_BASE} from '../../constants/URL_BASE'
-import {Container} from './styles';
+import {Container,RestaurantsList,Header} from './styles';
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from '../../assets/search.svg'
 import Footer from "../../components/Footer";
@@ -27,13 +27,11 @@ useEffect(()=>getCategoryList(),[data])
 const categories = []
 
 const chooseRestaurant = (id) =>{
-  console.log(id)
-  goToRestaurantDetails(navigate)
+  goToRestaurantDetails(navigate,id)
 }
 
 const handleInput = (e)=>{
   setInputValue(e.target.value)
-  
   getCategoryList()
 }
 
@@ -58,25 +56,24 @@ const renderRestaurantsCards = data?.restaurants
 
   return (
    <Container>
-       <TextField
-        placeholder="Restaurante"
-        color="common"
-        value={inputValue}
-        onChange={(e)=>handleInput(e)}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <img src={SearchIcon} alt="search icon"/>
-            </InputAdornment>
-          ),
-        }}
-  
-      />
-<<<<<<< HEAD
-      <ListCategory />
-=======
-      {renderRestaurantsCards}
->>>>>>> fe5af393d97e73604ca5eac94156015cc6aff857
+    <Header/>
+        <TextField
+          placeholder="Restaurante"
+          color="common"
+          value={inputValue}
+          onChange={(e)=>handleInput(e)}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <img src={SearchIcon} alt="search icon"/>
+              </InputAdornment>
+            ),
+          }}
+    
+        />
+      <RestaurantsList>
+        {renderRestaurantsCards}
+      </RestaurantsList>
       <Footer />
    </Container>
   );
