@@ -34,9 +34,9 @@ const RestaurantDetails = () => {
             return <S.CardProdutoMap key = {foods.id}>
                     <S.Image src={foods.photoUrl} alt = "imagem" />
                     <S.InfProduto>
-                        <p>{foods.name} </p>
-                        <p>{foods.description} </p>
-                        <p>{foods.price.toFixed(2)} </p>
+                        <S.NameFoods>{foods.name} </S.NameFoods>
+                        <S.DescriptionFoods>{foods.description} </S.DescriptionFoods>
+                        <S.PriceFoods> R$ {foods.price.toFixed(2)} </S.PriceFoods>
                     </S.InfProduto>
                     <S.ButtonsFood>
                         <p></p>
@@ -53,9 +53,9 @@ const RestaurantDetails = () => {
             return <S.CardProdutoMap key = {foods.id}>
                     <S.Image src={foods.photoUrl} alt = "imagem" />
                     <S.InfProduto>
-                    <p>{foods.name} </p>
-                    <p>{foods.description} </p>
-                    <p>{foods.price.toFixed(2)} </p>
+                    <S.NameFoods>{foods.name} </S.NameFoods>
+                        <S.DescriptionFoods>{foods.description} </S.DescriptionFoods>
+                        <S.PriceFoods> R$ {foods.price.toFixed(2)} </S.PriceFoods>
                     </S.InfProduto>
                     <S.ButtonsFood>
                     <p></p>
@@ -71,9 +71,9 @@ const RestaurantDetails = () => {
             return <S.CardProdutoMap key = {foods.id}>
                     <S.Image src={foods.photoUrl} alt = "imagem" />
                     <S.InfProduto>
-                    <p>{foods.name} </p>
-                    <p>{foods.description} </p>
-                    <p>{foods.price.toFixed(2)} </p>
+                    <S.NameFoods>{foods.name} </S.NameFoods>
+                        <S.DescriptionFoods>{foods.description} </S.DescriptionFoods>
+                        <S.PriceFoods> R$ {foods.price.toFixed(2)} </S.PriceFoods>
                     </S.InfProduto>
                     <S.ButtonsFood>
                         <p></p>
@@ -103,15 +103,24 @@ const RestaurantDetails = () => {
     <S.Container>          
       
         <S.CardProdutos>
-            <h3>Principais</h3>
-            <h4>{renderPrincipais}</h4>
-        
+            <h3> Principais</h3>
+            <S.Line>
+                <h4>{renderPrincipais}</h4>
+            </S.Line>
+
+            
             <h3>Bebidas</h3>
-            <h4>{renderDrinks}</h4>
-       
+            <S.Line>
+                <h4>{renderDrinks}</h4>
+            </S.Line>
+            
+           
             <h3>Acompanhamentos</h3>
-            <h4>{renderAcompanhamentos}</h4>
-        </S.CardProdutos>     
+            <S.Line>
+                <h4>{renderAcompanhamentos}</h4>
+            </S.Line>
+        </S.CardProdutos>
+
 </S.Container>
         
     );
@@ -139,3 +148,4 @@ const RestaurantDetails = () => {
         //     return acumulador;
             
         // },{})
+
