@@ -12,6 +12,9 @@ const Login = () => {
   // const [login, setLogin] = useState("");
   // const [password, setPassword] = useState("");
   const [ form, onChange, cleanFields] = useForm({email:"", password:""})
+  // const [labelUser,setlabelUser] = useState('Email')
+  // const [labelPassword,setlabelPassword] = useState('Senha')
+  // const [error,setError] = useState(false)
   const navigate = useNavigate()
 
   const getLogin = (event) => {
@@ -35,6 +38,11 @@ const Login = () => {
       })
       .catch((err) => {
         alert("Usuário não cadastrado.")
+        // setError(true)
+        // cleanFields()
+        // const erro = err.response.data.message
+        // setlabelPassword(erro)
+        // setlabelUser(erro)
       })
   }
 
@@ -51,7 +59,9 @@ const Login = () => {
           helperText=" "
           fullWidth="fullWidth"
           label="Email"
+          // label={labelUser}
           placeholder="Email"
+          // error={error}
           variante="filled"
           type="email"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
@@ -65,7 +75,9 @@ const Login = () => {
           helperText=" "
           fullWidth="fullWidth"
           label="Senha"
+          // label={labelPassword}
           placeholder="Senha"
+          // error={error}
           variante="filled"
           type="password"
           color= "success"
