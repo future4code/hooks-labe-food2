@@ -33,7 +33,7 @@ const RestaurantDetails = () => {
 
     }
  
-    // console.log("Carinho",cart)
+    console.log("Carinho",cart)
 
 
      const renderPrincipais = restaurantDetails && restaurantDetails.map ((foods)=> {
@@ -67,7 +67,7 @@ const RestaurantDetails = () => {
                     <S.ButtonsFood>
                     <p></p>
                     <p></p>
-                    <button> Adicionar </button>
+                    <button onClick={()=>addProduct(foods)}> Adicionar </button>
                     </S.ButtonsFood>
             </S.CardProdutoMap>
         }
@@ -85,7 +85,7 @@ const RestaurantDetails = () => {
                     <S.ButtonsFood>
                         <p></p>
                         <p></p>
-                         <button> Adicionar </button>
+                        <button onClick={()=>addProduct(foods)}> Adicionar </button>
                     </S.ButtonsFood>
             </S.CardProdutoMap>
         }
