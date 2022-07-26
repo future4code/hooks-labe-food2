@@ -1,3 +1,4 @@
+import GlobalState from "./GlobalStateContext/GlobalState";
 import GlobalStyles from "./GlobalStyles/GlobalStyles";
 // import Router from "./routes/Routes";
 import Layout from "./screens/Layout";
@@ -6,9 +7,11 @@ import Layout from "./screens/Layout";
 function App() {
   return (
     <div>
-      {/* <Router /> */}
-      <Layout/>
-      <GlobalStyles/>
+      <GlobalState>
+        {/* <Router /> */}
+        <Layout/>
+        <GlobalStyles/>
+      </GlobalState>
     </div>
   );
 }
