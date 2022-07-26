@@ -5,12 +5,14 @@ export const Container = styled.div`
     height:196px;
     margin:0;
     padding: 8px 16px 0;
+    cursor:pointer;
 
     img{
         width: 328px;
         height: 120px;
         margin: 0 ;
         max-width:100%;
+        object-fit: contain;
     }
     
 `;

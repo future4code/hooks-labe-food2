@@ -2,18 +2,18 @@ import React from "react";
 import {Container,Infos, Delivery,InsideCard} from './styles';
 import img from './image.png'
 
-const CardRestaurant=(props)=>{
+const CardRestaurant=({photo,name,deliveryTime,shipping,onClickCard})=>{
 
         
   return (
-   <Container>
+   <Container onClick={onClickCard}>
         <InsideCard>
-            <img src={img} alt="Restaurant profile"/>
+            <img src={photo} alt="Restaurant profile"/>
             <Infos>
-                <h2>Vinil Butantã</h2>
+                <h2>{name}</h2>
                 <Delivery>
-                    <span>50 - 60 min</span>
-                    <span>Frete R$6,00</span>
+                    <span>{deliveryTime} min</span>
+                    <span>Frete R${shipping},00</span>
                 </Delivery>
             </Infos>
         </InsideCard>
