@@ -8,6 +8,7 @@ const CardRetaurantDetails=(props) =>{
 return (
 
     <>
+    
     <p>{name}</p>
     <p>{category}</p>
     <p>{deliveryTime}</p>

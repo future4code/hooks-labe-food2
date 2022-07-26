@@ -28,7 +28,7 @@ const categories = []
 
 const chooseRestaurant = (id) =>{
   console.log(id)
-  goToRestaurantDetails(navigate)
+  goToRestaurantDetails(navigate,id)
 }
 
 const handleInput = (e)=>{
