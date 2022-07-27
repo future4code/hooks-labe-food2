@@ -30,7 +30,12 @@ const Router = () => {
                         <Route path="/restaurante" element={<Restaurant />} />
                         <Route path="/search" element={<Search />} />
                         <Route path="/signup" element={<SignUp />} />
+
                         <Route path="/foods" element={<RestaurantDetails />} />
+
+                        <Route path="/foods/:id" element={<RestaurantDetails />} />
+
+
                     </Routes>
                 {/* </GlobalStateContext.Provider> */}
             </BrowserRouter>

@@ -1,19 +1,18 @@
 import styled from 'styled-components';
  
 export const Container = styled.div`
-    /* box-sizing: border-box; */
-   // height: 740px;
+    
     width: 100%; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* background-color: yellow; */
    
 `;
  
 export const Image = styled.img `
-    width: 40%;
+    width: 96px;
+    height: 111px;
     border-radius:8px 0px 0px 8px;
 `
 
@@ -53,7 +52,6 @@ export const ButtonsFood = styled.div`
     flex-direction: column;
     justify-content: space-between;
     
-
 `
 
 export const Line = styled.div`
@@ -75,4 +73,12 @@ export const DescriptionFoods = styled.div`
 export const PriceFoods = styled.div`
     color: black;
     font-size: 16px;
+`
+export const TitleCategory = styled.div`
+    display: flex;
+    font-size: 16px;
+    text-align: left;
+    margin: 16px 16px 8px;
+    width:100%;
+ 
 `

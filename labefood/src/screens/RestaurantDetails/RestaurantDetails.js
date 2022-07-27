@@ -1,14 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import axios from "axios"
 import * as S from './styles'
 import CardRestaurantDetails from "../../components/CardRestaurantDetails";
+import {useParams} from "react-router-dom"
+import GlobalStateContext from "../../GlobalStateContext/GlobalStateContext";
+
 
 const RestaurantDetails = () => {
-
+    const {id} = useParams()
+    const {addProduct, cart} = useContext(GlobalStateContext)
     const [restaurantDetails,setRestaurantDetails] = useState ()
     const [restaurant, setRestaurant] = useState ()
 
-   
     
     
     useEffect (()=>{
@@ -21,18 +24,18 @@ const RestaurantDetails = () => {
         }
 
         axios
-        .get ("https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants/1 ",headers)
+        .get (`https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants/${id}`,headers)
         .then ((res)=> {
         setRestaurantDetails(res.data.restaurant.products)
         setRestaurant (res.data.restaurant)
-        console.log (res.data)
+        // console.log (res.data)
     })
-        .catch ((err)=>{console.log("Erro da requisição de detalhes")})
+        .catch ((err)=>{console.log("Erro na requisição de detalhes")})
 
     }
  
-    console.log("Detalhes restaurante",restaurantDetails)
-    console.log("Restaurante",restaurant)
+    console.log("Carinho",cart)
+
 
      const renderPrincipais = restaurantDetails && restaurantDetails.map ((foods)=> {
         if (foods.category !== "Bebida" &&  foods.category !== "Acompanhamento" ) {
@@ -46,7 +49,7 @@ const RestaurantDetails = () => {
                     <S.ButtonsFood>
                         <p></p>
                         <p></p>
-                         <button> Adicionar </button>
+                         <button onClick={()=>addProduct(foods)}> Adicionar </button>
                     </S.ButtonsFood>
             </S.CardProdutoMap>
         }
@@ -65,7 +68,7 @@ const RestaurantDetails = () => {
                     <S.ButtonsFood>
                     <p></p>
                     <p></p>
-                    <button> Adicionar </button>
+                    <button onClick={()=>addProduct(foods)}> Adicionar </button>
                     </S.ButtonsFood>
             </S.CardProdutoMap>
         }
@@ -83,7 +86,7 @@ const RestaurantDetails = () => {
                     <S.ButtonsFood>
                         <p></p>
                         <p></p>
-                         <button> Adicionar </button>
+                        <button onClick={()=>addProduct(foods)}> Adicionar </button>
                     </S.ButtonsFood>
             </S.CardProdutoMap>
         }
@@ -91,37 +94,55 @@ const RestaurantDetails = () => {
 
    const Verificar = () => {
      if (restaurant && restaurant) {
-        return <CardRestaurantDetails
+        return <>
+        
+        <CardRestaurantDetails
+
+        logoUrl={restaurant.logoUrl}  // verificar pq não funcionou
         name={restaurant.name} 
         category={restaurant.category}
         deliveryTime={restaurant.deliveryTime}
         address={restaurant.address}
         shipping={restaurant.shipping}
         /> 
+        
+    </>
      }
    }
   
            
 
     return (
-    <S.Container>      
+    <S.Container>   
 
+       
         {Verificar()}
       
         <S.CardProdutos>
-            <h3> Principais</h3>
+
+            
+            <S.TitleCategory>
+                <h4>Principais</h4>
+            </S.TitleCategory>        
             <S.Line>
                 <h4>{renderPrincipais}</h4>
             </S.Line>
 
             
-            <h3>Bebidas</h3>
+            <S.TitleCategory>
+                <h4>Bebidas</h4>
+            </S.TitleCategory>
+
             <S.Line>
                 <h4>{renderDrinks}</h4>
             </S.Line>
             
            
-            <h3>Acompanhamentos</h3>
+            <S.TitleCategory>
+                <h4>Acompanhamentos</h4>
+            </S.TitleCategory>
+
+
             <S.Line>
                 <h4>{renderAcompanhamentos}</h4>
             </S.Line>
