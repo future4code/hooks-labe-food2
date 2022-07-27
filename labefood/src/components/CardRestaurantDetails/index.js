@@ -8,6 +8,13 @@ const CardRestaurantDetails=(props) =>{
 return (
 
     <>
+
+    <p>{name}</p>
+    <p>{category}</p>
+    <p>{deliveryTime}</p>
+    <p>{address}</p>
+    <p>{shipping}</p>    
+
     <S.ContainerRest>
         
         <S.ImgLogoRest src= {logoUrl} /> 
@@ -30,6 +37,7 @@ return (
         </S.NameAddress>
        
     </S.ContainerRest>
+
     </>
    
 )

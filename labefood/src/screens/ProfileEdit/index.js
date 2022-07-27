@@ -66,6 +66,7 @@ const ProfileEdit = () => {
           />
           <TextField
             helperText=" "
+            type="email"
             value={email}
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             onChange={onChangeEmail}
@@ -74,8 +75,9 @@ const ProfileEdit = () => {
             placeholder="email@email.com"
             variante="filled"
             color="success"
+            title="coloque o email certo"
           />
-          <TextField
+          <TextField 
             helperText=" "
             value={cpf}
             onChange={onChangeCpf}
@@ -85,7 +87,7 @@ const ProfileEdit = () => {
             placeholder="000.000.000.00"
             variante="filled"
             color="success"
-            pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
+            inputProps={{ inputMode: 'numeric', pattern: '([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})'}}
           />
           <Button
             type="submit"
@@ -93,7 +95,6 @@ const ProfileEdit = () => {
             size="large"
             variant="contained"
             color="success"
-            pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
           >Salvar
           </Button>
         </Form>      
