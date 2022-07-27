@@ -33,7 +33,7 @@ const RestaurantDetails = () => {
 
     }
  
-    // console.log("Carinho",cart)
+    console.log("Carinho",cart)
 
 
      const renderPrincipais = restaurantDetails && restaurantDetails.map ((foods)=> {
