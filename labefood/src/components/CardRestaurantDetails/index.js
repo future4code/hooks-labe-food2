@@ -12,8 +12,7 @@ return (
     <p>{category}</p>
     <p>{deliveryTime}</p>
     <p>{address}</p>
-    <p>{shipping}</p>
-    
+    <p>{shipping}</p>    
     </>
    
 )
