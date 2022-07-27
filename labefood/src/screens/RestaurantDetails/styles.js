@@ -1,12 +1,15 @@
 import styled from 'styled-components';
  
 export const Container = styled.div`
-        width: 100%; 
+    /* box-sizing: border-box; */
+   // height: 740px;
+    width: 100%; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-       
+    /* background-color: yellow; */
+   
 `;
  
 export const Image = styled.img `
@@ -72,11 +75,4 @@ export const DescriptionFoods = styled.div`
 export const PriceFoods = styled.div`
     color: black;
     font-size: 16px;
-`
-
-export const RestaurantLogoImg = styled.img`
-    width: 100%;
-    height: 120px;
-    align-self: center;
-    border-radius: 8px;
 `
