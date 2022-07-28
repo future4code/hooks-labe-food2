@@ -7,6 +7,7 @@ import GlobalStateContext from "../../GlobalStateContext/GlobalStateContext";
 import Footer from "../../components/Footer";
 import ProductsCard from "../../components/ProductCard/ProductsCard";
 
+
 const RestaurantDetails = () => {
     const {id} = useParams()
     const {addProduct, cart} = useContext(GlobalStateContext)
@@ -84,19 +85,30 @@ const RestaurantDetails = () => {
         {Verificar()}
       
         <S.CardProdutos>
-            <h3> Principais</h3>
+
+            
+            <S.TitleCategory>
+                <h4>Principais</h4>
+            </S.TitleCategory>        
             <S.Line>
                 <h4>{renderPrincipais}</h4>
             </S.Line>
 
             
-            <h3>Bebidas</h3>
+            <S.TitleCategory>
+                <h4>Bebidas</h4>
+            </S.TitleCategory>
+
             <S.Line>
                 <h4>{renderDrinks}</h4>
             </S.Line>
             
            
-            <h3>Acompanhamentos</h3>
+            <S.TitleCategory>
+                <h4>Acompanhamentos</h4>
+            </S.TitleCategory>
+
+
             <S.Line>
                 <h4>{renderAcompanhamentos}</h4>
             </S.Line>

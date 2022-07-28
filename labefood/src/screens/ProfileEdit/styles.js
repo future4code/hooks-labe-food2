@@ -30,6 +30,7 @@ export const Tittle = styled.h2`
 text-justify: auto;
 position: relative;
 padding-left: 110px;
+font-weight: lighter;
 `
 export const Form = styled.form`
 width: 95%;

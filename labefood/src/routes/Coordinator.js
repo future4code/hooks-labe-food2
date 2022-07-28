@@ -35,7 +35,7 @@ export const goToProfileEdit = (navigate) => {
 }
 
 export const goToMyProfile = (navigate) => {
-    navigate('/Myprofile')
+    navigate('/profile')
 }
 
 export const goToRestaurant = (navigate) => {
