@@ -34,7 +34,7 @@ const RestaurantDetails = () => {
 
     }
  
-    console.log("Carinho",cart)
+    // console.log("Carinho",restaurantDetails)
 
 
      const renderPrincipais = restaurantDetails && restaurantDetails.map ((foods)=> {
@@ -49,9 +49,9 @@ const RestaurantDetails = () => {
                     <S.ButtonsFood>
                         <p></p>
                         <p></p>
-                         <button onClick={()=>addProduct(foods)}> Adicionar </button>
+                         <S.ButtonGreen onClick={()=>addProduct(foods)}> Adicionar </S.ButtonGreen>
                     </S.ButtonsFood>
-            </S.CardProdutoMap>
+                </S.CardProdutoMap>
         }
      })
 
@@ -68,7 +68,7 @@ const RestaurantDetails = () => {
                     <S.ButtonsFood>
                     <p></p>
                     <p></p>
-                    <button onClick={()=>addProduct(foods)}> Adicionar </button>
+                    <S.ButtonGreen onClick={()=>addProduct(foods)}> Adicionar </S.ButtonGreen>
                     </S.ButtonsFood>
             </S.CardProdutoMap>
         }
@@ -86,41 +86,37 @@ const RestaurantDetails = () => {
                     <S.ButtonsFood>
                         <p></p>
                         <p></p>
-                        <button onClick={()=>addProduct(foods)}> Adicionar </button>
+                        <S.ButtonGreen onClick={()=>addProduct(foods)}> Adicionar </S.ButtonGreen>
                     </S.ButtonsFood>
             </S.CardProdutoMap>
         }
      })
 
-   const Verificar = () => {
+   const InfsRestaurant = () => {
      if (restaurant && restaurant) {
         return <>
         
         <CardRestaurantDetails
 
-        logoUrl={restaurant.logoUrl}  // verificar pq não funcionou
-        name={restaurant.name} 
-        category={restaurant.category}
-        deliveryTime={restaurant.deliveryTime}
-        address={restaurant.address}
-        shipping={restaurant.shipping}
+            logoUrl={restaurant.logoUrl}
+            name={restaurant.name} 
+            category={restaurant.category}
+            deliveryTime={restaurant.deliveryTime}
+            address={restaurant.address}
+            shipping={restaurant.shipping}
         /> 
         
     </>
      }
    }
-  
-           
+   
 
     return (
     <S.Container>   
-
-       
-        {Verificar()}
+   
+        {InfsRestaurant()}
       
-        <S.CardProdutos>
-
-            
+        <S.CardProdutos>        
             <S.TitleCategory>
                 <h4>Principais</h4>
             </S.TitleCategory>        
