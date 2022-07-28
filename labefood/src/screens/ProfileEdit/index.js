@@ -3,9 +3,12 @@ import { Container, Header, Tittle, ButtonBack, Form , ContainerMaster} from './
 import { TextField, Button } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import axios from "axios"
+import { goBack } from "../../routes/Coordinator";
+import { useNavigate } from "react-router-dom";
 
 
 const ProfileEdit = () => {
+  const navigate = useNavigate()
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [cpf, setCpf] = useState("")
@@ -49,7 +52,7 @@ const ProfileEdit = () => {
     <ContainerMaster>
       <Container>
         <Header>
-          <ButtonBack><ArrowBackIosNewIcon /></ButtonBack>
+          <ButtonBack><ArrowBackIosNewIcon onClick={()=> goBack(navigate)}/></ButtonBack>
           <Tittle>Editar</Tittle>
         </Header>
         <Form onSubmit={rename}>
