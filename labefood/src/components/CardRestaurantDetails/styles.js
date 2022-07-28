@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 export const ImgLogoRest = styled.img`
 
-  width: 328px;
-  height: 120px;
-  margin: 17px 16px 12px;
-  object-fit: contain;
-  margin: 8px 16px
+    width: 100%;
+    height: 120px;
+    align-self: center;
+    border-radius: 8px;
 
 `
 
@@ -39,7 +38,7 @@ export const NameRest = styled.div`
 export const NameCategory = styled.div`
   width: 104px;
   height: 18px;
-  margin: 8px 16px;
+  margin: 4px 16px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -55,7 +54,7 @@ export const NameCategory = styled.div`
 export const NameAddress = styled.div`
   width: 328px;
   height: 18px;
-  margin: 4px 4px 4px 16px ;
+  margin: 4px 4px 0px 16px ;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -74,7 +73,7 @@ export const Time = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 18px;
-  margin: 8px 16px;
+  margin: 4px 16px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;

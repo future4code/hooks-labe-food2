@@ -26,12 +26,12 @@ export const CardProdutos = styled.div `
 `
 
 export const CardProdutoMap = styled.div `
-    width: 95%;
+    width: 96%;
     height: 112px;
     display: flex;
     justify-content: space-between;
     border: solid 1px #d3d3d3;
-    margin: 10px;
+    margin: 8px;
     border-radius:8px
     
 `
@@ -51,8 +51,20 @@ export const ButtonsFood = styled.div`
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-    
+        
 `
+export const ButtonGreen = styled.button`
+    width: 80px;
+    height: 31px;
+    text-align: center;
+    border-radius: 8px;
+    border: solid 1px #5cb646;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    background: none;
+    color: #5cb646;
+`
+
 
 export const Line = styled.div`
     border-top: 1px solid #000;

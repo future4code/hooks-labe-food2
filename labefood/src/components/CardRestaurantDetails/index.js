@@ -3,17 +3,11 @@ import * as S from './styles'
 
 const CardRestaurantDetails=(props) =>{
 
-    const {name, category,deliveryTime,address,shipping, logoUrl} = props
+    const {name, category,deliveryTime,address,shipping,logoUrl} = props
 
 return (
 
     <>
-
-    <p>{name}</p>
-    <p>{category}</p>
-    <p>{deliveryTime}</p>
-    <p>{address}</p>
-    <p>{shipping}</p>    
 
     <S.ContainerRest>
         
@@ -35,7 +29,7 @@ return (
         <S.NameAddress>
             {address}
         </S.NameAddress>
-       
+            
     </S.ContainerRest>
 
     </>
