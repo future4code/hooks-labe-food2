@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Container } from './styles'
+import { Container, Header, PersonalData, AddressData, PencilEdit, DataPersonal, AddressPersonal, OrdersHistory } from './styles'
 import axios from "axios";
 import { URL_BASE } from "../../constants/URL_BASE";
 import Footer from "../../components/Footer/index"
+import EditPencil from "../../assets/edit.svg"
+import { useNavigate } from "react-router-dom";
+import { goToProfileEdit, goToAddressEdit } from "../../routes/Coordinator";
 
 
 
-const Profile = () => { 
-  const [detailsprofile , setDetailsProfile ] = useState([])
-  const [history , setHistory] = useState([])
+const Profile = () => {
+  const navigate = useNavigate()
+  const [detailsprofile, setDetailsProfile] = useState([])
+  const [history, setHistory] = useState([])
 
   const getProfile = () => {
     const headers = {
@@ -17,9 +21,9 @@ const Profile = () => {
       }
     }
     axios
-    .get(`${URL_BASE}/profile` , headers)
-    .then((resp)=>{setDetailsProfile(resp.data.user)})
-    .catch((error)=>console.log(error))
+      .get(`${URL_BASE}/profile`, headers)
+      .then((resp) => { setDetailsProfile(resp.data.user) })
+      .catch((error) => console.log(error))
   }
 
   const getHistory = () => {
@@ -29,9 +33,9 @@ const Profile = () => {
       }
     }
     axios
-    .get(`${URL_BASE}/orders/history` , headers)
-    .then((resp)=>{setHistory(resp.data.orders)})
-    .catch((error)=>console.log(error))
+      .get(`${URL_BASE}/orders/history`, headers)
+      .then((resp) => { setHistory(resp.data.orders) })
+      .catch((error) => console.log(error))
   }
 
 
@@ -54,17 +58,34 @@ const Profile = () => {
     )
   })
 
-console.log(historyList)
+  console.log(historyList)
   return (
     <div>
-    <Container>
-      <p>{detailsprofile.name}</p>
-      <p>{detailsprofile.email}</p>
-      <p>{detailsprofile.cpf}</p>
-      <p>{detailsprofile.address}</p>
-      {historyList.length === 0 ? <p>sem pedidos</p> : historyList}
-    </Container>
-    <Footer />
+      <Header>
+        <h3>Meu Perfil</h3>
+      </Header>
+      <Container>
+        <DataPersonal>
+          <PersonalData>
+            <p>{detailsprofile.name}</p>
+            <p>{detailsprofile.email}</p>
+            <p>{detailsprofile.cpf}</p>
+          </PersonalData>
+          <PencilEdit src={EditPencil} onClick={() => goToProfileEdit(navigate)} />
+        </DataPersonal>
+        <AddressPersonal>
+          <AddressData>
+            <h5>Enderço cadastrado</h5>
+            <p>{detailsprofile.address}</p>
+          </AddressData>
+          <PencilEdit src={EditPencil} onClick={() => goToAddressEdit(navigate)} />
+        </AddressPersonal>
+        <OrdersHistory>
+          <h5>Histórico de pedidos</h5>
+          {historyList.length === 0 ? <p>sem pedidos</p> : historyList}
+        </OrdersHistory>
+      </Container>
+      <Footer />
     </div>
   );
 }
