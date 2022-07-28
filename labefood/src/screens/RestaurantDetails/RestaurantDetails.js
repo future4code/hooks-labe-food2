@@ -4,6 +4,8 @@ import * as S from './styles'
 import CardRestaurantDetails from "../../components/CardRestaurantDetails";
 import {useParams} from "react-router-dom"
 import GlobalStateContext from "../../GlobalStateContext/GlobalStateContext";
+import Footer from "../../components/Footer";
+import ProductsCard from "../../components/ProductCard/ProductsCard";
 
 const RestaurantDetails = () => {
     const {id} = useParams()
@@ -36,58 +38,22 @@ const RestaurantDetails = () => {
     console.log("Carinho",cart)
 
 
-     const renderPrincipais = restaurantDetails && restaurantDetails.map ((foods)=> {
+     const renderPrincipais = restaurantDetails && restaurantDetails.map((foods)=> {
         if (foods.category !== "Bebida" &&  foods.category !== "Acompanhamento" ) {
-            return <S.CardProdutoMap key = {foods.id}>
-                    <S.Image src={foods.photoUrl} alt = "imagem" />
-                    <S.InfProduto>
-                        <S.NameFoods>{foods.name} </S.NameFoods>
-                        <S.DescriptionFoods>{foods.description} </S.DescriptionFoods>
-                        <S.PriceFoods> R$ {foods.price.toFixed(2)} </S.PriceFoods>
-                    </S.InfProduto>
-                    <S.ButtonsFood>
-                        <p></p>
-                        <p></p>
-                         <button onClick={()=>addProduct(foods)}> Adicionar </button>
-                    </S.ButtonsFood>
-            </S.CardProdutoMap>
+            return <ProductsCard foods={foods} key={foods.id} action={() =>addProduct(foods)} txtButton={"Adicionar"}/>
         }
      })
 
     
-     const renderDrinks = restaurantDetails && restaurantDetails.map ((foods)=> {
+     const renderDrinks = restaurantDetails && restaurantDetails.map((foods)=> {
         if (foods.category === "Bebida") {
-            return <S.CardProdutoMap key = {foods.id}>
-                    <S.Image src={foods.photoUrl} alt = "imagem" />
-                    <S.InfProduto>
-                    <S.NameFoods>{foods.name} </S.NameFoods>
-                        <S.DescriptionFoods>{foods.description} </S.DescriptionFoods>
-                        <S.PriceFoods> R$ {foods.price.toFixed(2)} </S.PriceFoods>
-                    </S.InfProduto>
-                    <S.ButtonsFood>
-                    <p></p>
-                    <p></p>
-                    <button onClick={()=>addProduct(foods)}> Adicionar </button>
-                    </S.ButtonsFood>
-            </S.CardProdutoMap>
+            return <ProductsCard foods={foods} key={foods.id} action={() =>addProduct(foods)} txtButton={"Adicionar"}/>
         }
      })
     
-     const renderAcompanhamentos = restaurantDetails && restaurantDetails.map ((foods)=> {
+     const renderAcompanhamentos = restaurantDetails && restaurantDetails.map((foods)=> {
         if (foods.category === "Acompanhamento") {
-            return <S.CardProdutoMap key = {foods.id}>
-                    <S.Image src={foods.photoUrl} alt = "imagem" />
-                    <S.InfProduto>
-                    <S.NameFoods>{foods.name} </S.NameFoods>
-                        <S.DescriptionFoods>{foods.description} </S.DescriptionFoods>
-                        <S.PriceFoods> R$ {foods.price.toFixed(2)} </S.PriceFoods>
-                    </S.InfProduto>
-                    <S.ButtonsFood>
-                        <p></p>
-                        <p></p>
-                        <button onClick={()=>addProduct(foods)}> Adicionar </button>
-                    </S.ButtonsFood>
-            </S.CardProdutoMap>
+            return <ProductsCard foods={foods} key={foods.id} action={() =>addProduct(foods)} txtButton={"Adicionar"}/>
         }
      })
 
@@ -135,6 +101,7 @@ const RestaurantDetails = () => {
                 <h4>{renderAcompanhamentos}</h4>
             </S.Line>
         </S.CardProdutos>
+        <Footer/>
 
 </S.Container>
         

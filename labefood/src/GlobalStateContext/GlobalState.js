@@ -10,8 +10,8 @@ const GlobalState = (props) => {
 
  const addProduct = (product) => {
 
-  const index = cart.findIndex((productIndCart)=>{
-    if (productIndCart.id === product.id) {
+  const index = cart.findIndex((productInCart)=>{
+    if (productInCart.id === product.id) {
         return true
     } else {
         return false
@@ -27,25 +27,60 @@ const GlobalState = (props) => {
     alert("Produto adicionado")
   }
   else{
-    const newCart = cart.map((productIndCart)=>{
-      if (productIndCart.id === product.id){
-        return {...productIndCart, quantity : productIndCart.quantity +1}
+    const newCart = cart.map((productInCart)=>{
+      if (productInCart.id === product.id){
+        return {...productInCart, quantity : productInCart.quantity +1}
       }
       else{
-        return productIndCart
+        return productInCart
       }
       
     })
     setCart(newCart)
       alert("+ 1 produto add")
   }
+  console.log(index)
  }
+ 
+ const removeProductInCart = (product) => {
 
-const teste ={
-addProduct,
-cart
-
-}
+   const index = cart.findIndex((productInCart)=>{
+     if (productInCart.id === product.id) {
+       return true
+      } else {
+        return false
+      }
+    })
+    console.log(index)
+    
+    if(index !== -1){
+      const newCart = cart.map((productInCart)=>{
+        if (productInCart.id === product.id){
+          return {...productInCart, quantity: productInCart.quantity - 1}
+        }
+        else{
+          return productInCart
+        }  
+      })
+      .filter((productInCart) => {
+        if(productInCart.quantity < 1){
+          return false
+        } else {
+          return true
+        }
+    })
+      setCart(newCart)
+      alert(`${product.name} removido`)
+      
+    }
+  }
+  
+  
+  const teste ={
+  addProduct,
+  removeProductInCart,
+  cart
+  }
 
   return (
    <GlobalStateContext.Provider value={teste} >

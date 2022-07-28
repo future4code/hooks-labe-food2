@@ -1,30 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "../../components/Footer";
 import { URL_BASE, axiosConfig } from "../../constants/URL_BASE"
-import { ContainerFoter, Container, ContainerTitle, ContainerAdress, Title, DeliveryAddress, Address } from './styles'
+import {  Container, ContainerTitle, ContainerAdress, Title, DeliveryAddress, Address } from './styles'
+import GlobalStateContext from "../../GlobalStateContext/GlobalStateContext";
+import ProductsCard from "../../components/ProductCard/ProductsCard";
 
 
 const Cart = () => {
-
+  const {removeProductInCart, cart} = useContext(GlobalStateContext)
   const [fullAddress, setFullAddress] = useState('')
-  const [hasOrder, setHasOrder] = useState(false)
-  const [order, setOrder] = useState({})
+
+ 
   
-  const getActiveOrder = () => {
-    axios
-    .get(`${URL_BASE}/active-order`, axiosConfig)
-    .then(res => {
-      setOrder(res.data)
-      console.log("pedido",order)
-      if(order.order === null){
-        setHasOrder(false)
-      } else {
-        setHasOrder(true)
-      }
-    })
-    .catch(err => console.log(err))
-  }
+ const cartIsEmpty = () =>{
+  if(cart.length === 0){
+      return <p>Carrinho vazio</p>
+    } else{
+      return renderProductsInCart
+    }
+  } 
   
   const getFullAddress = () => {
     axios
@@ -35,21 +30,25 @@ const Cart = () => {
       })
       .catch(err => console.log(err))
     }
-
-    const isEmpty = () => {
-      if(hasOrder === true){
-        return <p>Tem pedido</p>
-      } else{
-        return <h3>Carrinho vazio</h3>
-    }
-  }
     
+
+    const renderProductsInCart = cart && cart.map((foods) => {
+      return (
+      <ProductsCard 
+      key={foods.id} 
+      foods={foods}
+      action={() =>removeProductInCart(foods)}
+      txtButton={"Remover"}
+      />)
+    })
+
     useEffect(() => {
       getFullAddress()
-      getActiveOrder()
     }, [])
 
+
   return (
+<div>
 
     <Container>
       <ContainerTitle>
@@ -61,12 +60,13 @@ const Cart = () => {
         <Address>{fullAddress}</Address>
       </ContainerAdress>
 
-      {isEmpty()}
+      {cartIsEmpty()}
 
-      <ContainerFoter>
-        <Footer />
-      </ContainerFoter>
+    
+      
     </Container>
+    <Footer />
+</div>
   );
 }
 
