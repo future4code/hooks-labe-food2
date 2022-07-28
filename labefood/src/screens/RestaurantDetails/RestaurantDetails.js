@@ -36,12 +36,13 @@ const RestaurantDetails = () => {
 
     }
  
-    console.log("Carinho",cart)
+    // console.log("Carinho",restaurantDetails)
 
 
      const renderPrincipais = restaurantDetails && restaurantDetails.map((foods)=> {
         if (foods.category !== "Bebida" &&  foods.category !== "Acompanhamento" ) {
             return <ProductsCard foods={foods} key={foods.id} action={() =>addProduct(foods)} txtButton={"Adicionar"}/>
+
         }
      })
 
@@ -49,44 +50,42 @@ const RestaurantDetails = () => {
      const renderDrinks = restaurantDetails && restaurantDetails.map((foods)=> {
         if (foods.category === "Bebida") {
             return <ProductsCard foods={foods} key={foods.id} action={() =>addProduct(foods)} txtButton={"Adicionar"}/>
+
         }
      })
     
      const renderAcompanhamentos = restaurantDetails && restaurantDetails.map((foods)=> {
         if (foods.category === "Acompanhamento") {
             return <ProductsCard foods={foods} key={foods.id} action={() =>addProduct(foods)} txtButton={"Adicionar"}/>
+
         }
      })
 
-   const Verificar = () => {
+   const InfsRestaurant = () => {
      if (restaurant && restaurant) {
         return <>
         
         <CardRestaurantDetails
 
-        logoUrl={restaurant.logoUrl}  // verificar pq não funcionou
-        name={restaurant.name} 
-        category={restaurant.category}
-        deliveryTime={restaurant.deliveryTime}
-        address={restaurant.address}
-        shipping={restaurant.shipping}
+            logoUrl={restaurant.logoUrl}
+            name={restaurant.name} 
+            category={restaurant.category}
+            deliveryTime={restaurant.deliveryTime}
+            address={restaurant.address}
+            shipping={restaurant.shipping}
         /> 
         
     </>
      }
    }
-  
-           
+   
 
     return (
     <S.Container>   
-
-       
-        {Verificar()}
+   
+        {InfsRestaurant()}
       
-        <S.CardProdutos>
-
-            
+        <S.CardProdutos>        
             <S.TitleCategory>
                 <h4>Principais</h4>
             </S.TitleCategory>        

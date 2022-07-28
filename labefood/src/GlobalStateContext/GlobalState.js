@@ -2,10 +2,7 @@ import React, { useState } from 'react'
 import GlobalStateContext from "./GlobalStateContext";
 
 const GlobalState = (props) => {
-  const [hasAdress, setHasAdress] = useState("");
-  const [idRestaurant, setIdRestaurant] = useState("")
-  const [idProduct, setIdProduct ] = useState("")
-  const [restaurantDetails, setRestaurantDetails] = useState()
+  
   const [cart, setCart]= useState([])
 
  const addProduct = (product) => {
