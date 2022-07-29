@@ -36,7 +36,7 @@ const GlobalState = (props) => {
     setCart(newCart)
       alert("+ 1 produto add")
   }
-  console.log(index)
+  
  }
  
  const removeProductInCart = (product) => {
@@ -48,7 +48,7 @@ const GlobalState = (props) => {
         return false
       }
     })
-    console.log(index)
+    
     
     if(index !== -1){
       const newCart = cart.map((productInCart)=>{
