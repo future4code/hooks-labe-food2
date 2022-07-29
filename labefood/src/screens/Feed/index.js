@@ -9,6 +9,7 @@ import Footer from "../../components/Footer";
 import useRequestDataWithHeaders from "../../hooks/useRequestDataWithHeaders";
 import CardRestaurant from "../../components/CardRestaurant";
 import { goToRestaurantDetails } from "../../routes/Coordinator";
+import ListCategory from "../../components/ListCategory";
 
 
 
@@ -73,6 +74,7 @@ const renderRestaurantsCards = data?.restaurants
     
         />
       <RestaurantsList>
+        <ListCategory list={categories}/>
         {renderRestaurantsCards}
       </RestaurantsList>
       <Footer />

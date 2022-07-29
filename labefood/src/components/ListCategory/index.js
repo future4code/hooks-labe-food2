@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import {Container} from './styles';
+import {CategoryItem, Container} from './styles';
 import { URL_BASE } from "../../constants/URL_BASE";
 import axios from 'axios';
 
@@ -13,6 +13,7 @@ const ListCategory=()=>{
     useEffect(()=>{getCategories()},[])
         const [data,setData] = useState(undefined);
         const [isLoading,setIsLoading] = useState(false);
+        const [categoryFilter, setCategoryFilter] = useState('');
 
     const getCategories = async()=>{
         setIsLoading(true)
@@ -25,9 +26,17 @@ const ListCategory=()=>{
             console.log(err)
         }
     }
+
+    const onFilterRestaurants = (category) =>{
+        setCategoryFilter(category)
+        
+    }
    
-    const listCategories =  data?.map((restaurant)=>{
-        return <h1>{restaurant.category}</h1>
+    const listCategories =  data?.map((restaurant, index)=>{
+        return (<CategoryItem
+        key={index}
+        onClick={()=> onFilterRestaurants(restaurant.category)}
+        >{restaurant.category}</CategoryItem>)
     })
    
   return (

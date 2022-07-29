@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Image = styled.img `
     width: 40%;
     border-radius:8px 0px 0px 8px;
+    object-fit: contain;
 `
 
 export const CardProdutos = styled.div `

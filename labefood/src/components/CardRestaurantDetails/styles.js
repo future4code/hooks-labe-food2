@@ -6,6 +6,7 @@ export const ImgLogoRest = styled.img`
     height: 120px;
     align-self: center;
     border-radius: 8px;
+    object-fit: contain;
 
 `
 
