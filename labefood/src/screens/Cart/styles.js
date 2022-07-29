@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 
-height: 100%;
+height: 580px;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -66,8 +66,11 @@ export const Address = styled.h3`
     color: black;
 `
 
-export const ContainerFoter = styled.div`
-    width: 100%;
-    bottom: 0;
-    /* position: fixed; */
+export const ContainerRestaurant = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `
+
+

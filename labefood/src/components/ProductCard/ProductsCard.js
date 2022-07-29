@@ -1,25 +1,23 @@
 import React from "react"
+import * as S from './styles'
+
 
 const ProductsCard = (props) => {
-    
-    const { products, addFunction, RemoveProduct } = props
+    const { foods, action, txtButton } = props
     return (
-        <>
-            {products && products.map ((product)=>{
-                return(
-                    <>
-                    {/* <img src={product.photoUrl}/> */}
-                    <p>{product.name}</p>
-                    </>
-                    
-                )
-            })
-            
-            }
-                    
-                
-        </>
-
+        <S.CardProdutoMap >
+                    <S.Image src={foods.photoUrl} alt = "imagem" />
+                    <S.InfProduto>
+                    <S.NameFoods>{foods.name} </S.NameFoods>
+                        <S.DescriptionFoods>{foods.description} </S.DescriptionFoods>
+                        <S.PriceFoods> R$ {foods.price.toFixed(2)} </S.PriceFoods>
+                    </S.InfProduto>
+                    <S.ButtonsFood>
+                        <p></p>
+                        <p></p>
+                        <button onClick={action}>{txtButton}</button>
+                    </S.ButtonsFood>
+            </S.CardProdutoMap>
     )
 
 }

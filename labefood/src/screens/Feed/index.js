@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useContext, useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {URL_BASE} from '../../constants/URL_BASE'
@@ -9,6 +9,7 @@ import Footer from "../../components/Footer";
 import useRequestDataWithHeaders from "../../hooks/useRequestDataWithHeaders";
 import CardRestaurant from "../../components/CardRestaurant";
 import { goToRestaurantDetails } from "../../routes/Coordinator";
+
 
 
 

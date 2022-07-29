@@ -1,31 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "../../components/Footer";
 import { URL_BASE, axiosConfig } from "../../constants/URL_BASE"
-import { ContainerFoter, Container, ContainerTitle, ContainerAdress, Title, DeliveryAddress, Address } from './styles'
+import { Container, ContainerTitle, ContainerAdress, Title, DeliveryAddress, Address, ContainerRestaurant } from './styles'
+import GlobalStateContext from "../../GlobalStateContext/GlobalStateContext";
+import ProductsCard from "../../components/ProductCard/ProductsCard";
+
 
 
 const Cart = () => {
-
+  const { removeProductInCart, cart } = useContext(GlobalStateContext)
   const [fullAddress, setFullAddress] = useState('')
-  const [hasOrder, setHasOrder] = useState(false)
-  const [order, setOrder] = useState({})
-  
-  const getActiveOrder = () => {
-    axios
-    .get(`${URL_BASE}/active-order`, axiosConfig)
-    .then(res => {
-      setOrder(res.data)
-      console.log("pedido",order)
-      if(order.order === null){
-        setHasOrder(false)
-      } else {
-        setHasOrder(true)
-      }
-    })
-    .catch(err => console.log(err))
+
+
+  const cartIsEmpty = () => {
+    if (cart.length === 0) {
+      return <p>Carrinho vazio</p>
+    } else {
+      return renderProductsInCart
+    }
   }
-  
+
+
+
   const getFullAddress = () => {
     axios
       .get(`${URL_BASE}/profile/address`, axiosConfig)
@@ -34,39 +31,75 @@ const Cart = () => {
         setFullAddress(address)
       })
       .catch(err => console.log(err))
-    }
+  }
 
-    const isEmpty = () => {
-      if(hasOrder === true){
-        return <p>Tem pedido</p>
-      } else{
-        return <h3>Carrinho vazio</h3>
+
+  const renderProductsInCart = cart && cart.map((foods) => {
+    return (
+      <ProductsCard
+        key={foods.id}
+        foods={foods}
+        action={() => removeProductInCart(foods)}
+        txtButton={"Remover"}
+      />)
+  })
+
+  const prices = cart && cart.map((products) => {
+    return products.quantity * products.price
+  })
+
+  let totalPrices = 0
+  const getTotalPrices = () => {
+    if (cart.length !== 0) {
+
+      for (let i = 0; i < prices.length; i++) {
+        totalPrices += prices[i]
+      }
+      return <p>R$ {totalPrices.toFixed(2)}</p>
+    } else {
+      return null
     }
   }
-    
-    useEffect(() => {
-      getFullAddress()
-      getActiveOrder()
-    }, [])
+
+  useEffect(() => {
+    getFullAddress()
+  }, [])
+
 
   return (
+    <div>
 
-    <Container>
-      <ContainerTitle>
-        <Title>Meu carrinho</Title>
-      </ContainerTitle>
+      <Container>
+        <ContainerTitle>
+          <Title>Meu carrinho</Title>
+        </ContainerTitle>
 
-      <ContainerAdress>
-        <DeliveryAddress>Enderço de entrega</DeliveryAddress>
-        <Address>{fullAddress}</Address>
-      </ContainerAdress>
+        <ContainerAdress>
+          <DeliveryAddress>Enderço de entrega</DeliveryAddress>
+          <Address>{fullAddress}</Address>
+        </ContainerAdress>
 
-      {isEmpty()}
+        <ContainerRestaurant>
+          <p>as infos do restaurante vão aqui</p>
+        </ContainerRestaurant>
 
-      <ContainerFoter>
-        <Footer />
-      </ContainerFoter>
-    </Container>
+        <ContainerProducts>
+          {cartIsEmpty()}
+        </ContainerProducts>
+
+        <div>
+          <p>Subtotal</p>
+          <p>{getTotalPrices()}</p>
+          <hr />
+          <input type="radio" id="money" name="money" />
+          <label for="money">Dinheiro</label>
+          <input type="radio" id="credCard" name="money" />
+          <label for="credCard">Cartão de crédito</label>
+        </div>
+
+      </Container>
+      <Footer />
+    </div>
   );
 }
 
