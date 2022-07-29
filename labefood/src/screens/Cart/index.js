@@ -83,9 +83,9 @@ const Cart = () => {
           <p>as infos do restaurante vão aqui</p>
         </ContainerRestaurant>
 
-        <ContainerProducts>
+        {/* <ContainerProducts>
           {cartIsEmpty()}
-        </ContainerProducts>
+        </ContainerProducts> */}
 
         <div>
           <p>Subtotal</p>

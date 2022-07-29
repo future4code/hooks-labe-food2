@@ -13,6 +13,7 @@ export const RestaurantsList = styled.div`
    height:463px;
 
    overflow-y:scroll;
+   overflow-x:hidden;
      scrollbar-width: none;
      -ms-overflow-style: none; 
      &::-webkit-scrollbar{

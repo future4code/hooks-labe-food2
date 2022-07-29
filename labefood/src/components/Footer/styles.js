@@ -11,4 +11,5 @@ background-color:white;
 `
 export const Images = styled.img`
 background-image: url(${props => props.img});
+cursor:pointer;
 `
