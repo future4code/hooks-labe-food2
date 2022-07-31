@@ -2,7 +2,12 @@ import React, { useContext, useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {URL_BASE} from '../../constants/URL_BASE'
-import {Container,RestaurantsList,Header, ContainerCategories, CategoryItem} from './styles';
+import {Container,
+        RestaurantsList,
+        Header, 
+        ContainerCategories, 
+        CategoryItem,
+        SearchArea} from './styles';
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from '../../assets/search.svg'
 import Footer from "../../components/Footer";
@@ -29,7 +34,7 @@ useEffect(()=>getCategoryList(),[data])
 const categories = []
 const [renderCategories, setRenderCategories] = useState([])
 const [categoryFilter, setCategoryFilter] = useState('')
-const [showCategoriesList, setShowCategoriesList] = useState(true)
+const [showCategoriesList, setShowCategoriesList] = useState('visible')
 
 const chooseRestaurant = (id) =>{
   goToRestaurantDetails(navigate,id)
@@ -38,8 +43,8 @@ const chooseRestaurant = (id) =>{
 const handleInput = (e)=>{
   setCategoryFilter('')
   setInputValue(e.target.value)
-  getCategoryList()
 }
+
 
 const choiceCategory = (category) =>{
   setCategoryFilter(category)
@@ -60,7 +65,12 @@ const getCategoryList = ()=>{data?.restaurants.map((restaurant)=>{
   setRenderCategories(categoriesList)
 }
 
-
+const setCategoriesHidden = () =>{
+  setShowCategoriesList('hidden')
+}
+const setCategorisVisible = () =>{
+  setShowCategoriesList('visible')
+}
 
 const renderRestaurantsCards = data?.restaurants
 .filter((restaurant)=>{return restaurant.category.includes(categoryFilter)})
@@ -75,16 +85,20 @@ const renderRestaurantsCards = data?.restaurants
   onClickCard={()=>chooseRestaurant(restaurant.id)}
   />
 })
-console.log(categories)
 
   return (
    <Container>
-    <Header/>
+    <Header>
+      <h1>FutureEats</h1>
+    </Header>
+    <SearchArea>
         <TextField
           placeholder="Restaurante"
           color="common"
           value={inputValue}
           onChange={(e)=>handleInput(e)}
+          onFocus={setCategoriesHidden}
+          fullWidth
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -92,15 +106,15 @@ console.log(categories)
               </InputAdornment>
             ),
           }}
-    
         />
-      <RestaurantsList>
-        <ContainerCategories>
+    </SearchArea>
+    <RestaurantsList>
+        <ContainerCategories onClick={setCategorisVisible}>
           {renderCategories}
         </ContainerCategories>
         {renderRestaurantsCards}
-      </RestaurantsList>
-      <Footer />
+    </RestaurantsList>
+    <Footer />
    </Container>
   );
 }

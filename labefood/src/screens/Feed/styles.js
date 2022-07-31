@@ -5,7 +5,6 @@ export const Container = styled.div`
     height:100%;
     display:flex;
     flex-direction:column;
-
 `;
 
 export const RestaurantsList = styled.div`
@@ -25,6 +24,34 @@ export const RestaurantsList = styled.div`
 export const Header = styled.div`
     width:100%;
     height:64px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0.5px 0 0 rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+    border-bottom: solid 0.5px rgba(0,0,0,0.25);
+    margin-bottom: 8px;
+
+    h1{
+    all:unset;    
+    width: 74px;
+    height: 19px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.39px;
+    text-align: center;
+    }
+`;
+
+export const SearchArea = styled.div`
+   width:360px;
+    padding:0 16px;
 `;
 
 export const ContainerCategories = styled.div`
@@ -58,7 +85,7 @@ export const CategoryItem = styled.button`
     text-align: center;
     color:#000;
     cursor:pointer;
-    display:${(props)=> props.visibility?`block`:`none` };
+    visibility:${(props)=>props.visibility};
 
     &:focus{
         color:#5cb646;
